@@ -1,0 +1,27 @@
+{% extends "freeme/index.html" %}
+{% block cuerpo %}
+    <div style="padding: 10px">
+       <div class="row well " style="margin-left: 20px; margin-right: 20px">
+            <div class="span3" style="margin-top: 30px" id="menu">
+                <ul class="nav nav-list well" style="background-color: #ffffff !important">
+                    <li class="nav-header" style="font-size: 14px; height: 40px">Opciones: </li>
+                    <li><a href="/Enlace/docente/" style="color: #000000; font-size: 12px"><span class="glyphicon glyphicon-file text-warning">&nbsp;&nbsp;</span>Datos del Docente</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Profesores/cambiar_pass/" style="color: #000000; font-size: 12px"><span class="glyphicon glyphicon-list-alt text-warning">&nbsp;&nbsp;</span>Cambiar Contraseña</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Profesores/" style="color: #000000; font-size: 12px"><span class="glyphicon glyphicon-user text-warning">&nbsp;&nbsp;</span>Calificaciones</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Notas/modificar_notas/" style="color: #000000; font-size: 12px"><span class="glyphicon glyphicon-file text-warning">&nbsp;&nbsp;</span>Modificar Calificaciones</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/Notas/actas/" style="color: #000000; font-size: 12px"><span class="glyphicon glyphicon-file text-warning">&nbsp;&nbsp;</span>Actas de Calificaciones</a></li>
+
+                </ul>
+            </div>
+            <div class="span8" style="height: auto; font-size: 12px" id="main">
+                {% block informacion %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

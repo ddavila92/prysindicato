@@ -1,0 +1,17 @@
+{% extends "freeme/index.html" %}
+{% block cuerpo %}
+    <div class="well" style="padding: 20px; margin-right: 30px;margin-left: 30px" >
+        <h3 style="text-align: center">{{ noticia.titulo }}</h3>
+        <hr style="margin-top: -10px"/>
+        <p style="text-align: justify">{{ noticia.noticia }}</p>
+        <div style="text-align: center">
+            <img src="/media/{{ noticia.imagen }}" alt="" style="width: 350px" class="img-thumbnail"/>
+        </div>
+    </div>
+    <div style="text-align: center">
+        <a href="/Noticias/" class="btn btn-info">Volver</a>
+    </div>
+    <div style="height: 30px">
+
+    </div>
+{% endblock %}

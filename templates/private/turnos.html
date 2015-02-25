@@ -1,0 +1,82 @@
+{% extends "private/micuentalogin.html" %}
+{% block informacion %}
+ <div class="well" style="background-color: #ffffff !important; margin-top: 33px;text-align: center">
+    <strong>GESTIONAR TURNOS</strong>
+    <div class="row informacion" style="text-align: justify; font-size: 14px; margin-top: 20px; margin-left: 10px; ">
+            <label for="" style="background-color: #67A2B8; padding: 2px; border-radius: 3px; color: #ffffff">INFORMACIÓN:</label>
+            <div class="well" style="background-color: #ffffff !important;">
+                <p>Fecha: {{ dia }}, {{ fecha }} </p>
+                <p>Nombres: {{ usuario.first_name }}</p>
+                <p>Apellidos: {{ usuario.last_name }}</p>
+            </div>
+         </div>
+    <div class="informacion">
+        <div class="well" style="margin-left: 10px; background-color: #ffffff !important;">
+            <form action="/Turnos/" method="post">
+                <div class="row" style="text-align: center; width: 400px; margin: 0 auto">
+                    <table>
+                        <tr><td style="width: 140px">Tipo de tramite: </td><td style="width: 300px">
+                            <select name="tipo_tramite" id="" class="form-control">
+                                {% for tipo in tipo_tramite %}
+                                    <option value="{{ tipo.id }}">{{ tipo.tipo_tramite }}</option>
+                                {% endfor %}
+                            </select>
+                        </td></tr>
+                        <tr><td colspan="2">{{ msj }}</td></tr>
+                    </table>
+                </div>
+                <div class="" style="text-align: center">
+                    <button class="btn btn-info">Generar Turno</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if turno %}
+    <div class="print">
+        <div class="well" style="margin-left: 8px; background-color: #ffffff !important;">
+            <div class="" style="text-align: center">
+                <p style="font-size: 20px; padding: 10px; font-weight: bold">SINDICATO CANTONAL DE CHOFERES PROFESIONALES DE PASAJE</p>
+                <img src="/static/img/logo.png"style="width: 100px"/>
+            </div>
+            <div class="row" style="padding: 10px;margin: 0 auto; font-size: 20px">
+                <p style="text-align: center;font-weight: bold">TURNO No.: {{ turno.id }}</p>
+                <p style="text-align: center">****** &nbsp;&nbsp;&nbsp;{{ turno.fecha}} &nbsp;&nbsp;&nbsp;******</p>
+                <p style="text-align: center">Tipo tramite: {{ tipo}}</p>
+            </div>
+            <div class="row" style="padding: 10px;margin-left: 20px">
+                <p style="font-weight:bold; font-size: 15px">D&nbsp;A&nbsp;T&nbsp;O&nbsp;S&nbsp;&nbsp;D&nbsp;E&nbsp;L&nbsp;&nbsp;&nbsp;U&nbsp;S&nbsp;U&nbsp;A&nbsp;R&nbsp;I&nbsp;O:</p>
+                <p>Nombres y Apellidos: {{ usuario.first_name }} {{ usuario.last_name }}</p>
+                <p>Cédula de I.D.:{{ estudiante.cedula }}</p>
+                <p>Dirección de Domicilio: {{ estudiante.direccion }}</p>
+                <p>Teléfono: {{ estudiante.telefono }}</p>
+            </div>
+        </div>
+        <div style="padding: 10px; text-align: center" id="imprimir" >
+            <p>¿Está de acuerdo con la hora y la fecha de su turno? : <a href="#" class="imprimir">Imprimir Turno</a></p>
+            <p>No estoy de acuerdo: <a href="/Turnos/eliminar/{{ turno.id }}">Cancelar</a></p>
+        </div>
+    </div>
+{% else %}
+    <div style="height: 400px">
+
+    </div>
+{% endif %}
+</div>
+    <script src="/static/js/jquery-1.8.2.js"></script>
+    <script>
+	$(document).ready(function()
+	{
+		$(".imprimir").click(function()
+		{
+            $(".container").hide()
+            $(".span3").hide()
+            $(".informacion").hide()
+            $("#imprimir").hide()
+            $(".row").removeClass("well")
+            print()
+            location.reload()
+        });
+	});
+
+    </script>
+{% endblock %}

@@ -1,0 +1,141 @@
+<link rel="stylesheet" href="/static/css/bootstrap.css"/>
+
+{% for nota in notas %}
+    {% if forloop.first%}
+        <label for="" class="label label-info" style="padding: 5px">ASIGNATURA: {{ nota.matueria.materia|upper }}</label>
+        <p>Profesor: {{ usuario.first_name }} {{ usuario.last_name }}</p>
+        {% for matricula in matriculas %}
+            {% if forloop.first%}
+                <p>Paralelo: {{ matricula.paralelo.paralelo }} </p>
+            {% endif %}
+        {% endfor %}
+        {% if estado %}
+         {% endif %}
+    {% endif %}
+{% endfor %}
+<div class="well" style="margin-top: 10px; background-color: #ffffff !important; padding: 0px; padding: 5px">
+<table class="table table-bordered" style="padding: 0px" id="tb">
+<tr style="background-color: #65A1B7; color: #ffffff !important;"><th rowspan="2">Apellidos y Nombres</th><th colspan="8" style="text-align: center">Notas</th></tr>
+<tr style="background-color: #65A1B7; color: #ffffff !important;"><th style="width: 30px">Tar.</th><th style="width: 30px">Act.</th><th style="width: 30px">Lecc.</th><th style="width: 30px">Ex.</th><th style="width: 30px">Suplet.</th><th style="width: 30px">Prom.</th><th style="width: 40px">Observación</th>{% if not estado %}
+ <th style="width: 20px; text-align: center"><i class="icon-edit"></i></th>
+{% endif %} </tr>
+{% for matricula in matriculas %}
+  {% for nota in notas %}
+        {% ifequal nota.estudiante.id matricula.estudiante.id%}
+            <tr><td>{{ matricula.estudiante.usuario.last_name }} {{ matricula.estudiante.usuario.first_name }}</td><td>{{ nota.deber }}</td>
+            <td>{{ nota.actuacion }}</td><td>{{ nota.leccion }}</td><td>{{ nota.examen }}</td><td>{{ nota.supletorio }}</td><td></td><td>observacion</td>
+            {% if not estado %}
+                <td><a href="#mNotas" data-toggle="modal" class="datos" data-id="{{ nota.id }}" data-nombre="{{ matricula.estudiante.usuario.last_name }} {{ matricula.estudiante.usuario.first_name }}"
+                    data-deber="{{ nota.deber }}" data-actuacion="{{ nota.actuacion }}" data-leccion="{{ nota.leccion }}" data-examen="{{ nota.examen }}"
+                    data-supletorio="{{ nota.supletorio }}"><i class="icon-edit"></i></a></td></tr>
+            {% endif %}
+        {% endifequal %}
+  {% endfor %}
+{% endfor %}
+    </table>
+</div>
+</div>
+<!-- Modal -->
+<div id="mNotas" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel" style="text-align: center">MODIFICAR NOTAS DE ESTUDIANTES</h3>
+  </div>
+  <div class="modal-body">
+        <div class="panel panel-default" style="width: 500px; margin: 0 auto; font-size: 12px">
+            <form action="/Notas/modificar_notas_est/" method="post">
+                {% for matricula in matriculas %}
+                    <input type="hidden"name="periodo" value="{{ matricula.periodo.id }}"/>
+                    <input type="hidden"name="seccion" value="{{ matricula.seccion.id }}"/>
+                    <input type="hidden"name="paralelo" value="{{ matricula.paralelo.id }}"/>
+                {% endfor %}
+
+                {% for nota in notas %}
+                    <input type="hidden" value="{{ nota.materia.id }}" name="materia" id="materia"/>
+                {% endfor %}
+                <table>
+                    <input type="hidden" name="nota" id="nota"/>
+                    <tr><td>Apellidos y Nombres</td><td style="width: 350px"><input type="text" name="nombre" id="apnom" disabled style="width: 100%"/></td></tr>
+                    <tr><td>Nota Tareas: </td><td><input type="text" id="deber" name="deber"/></td></tr>
+                    <tr><td>Nota Actuaciones: </td><td><input type="text" id="actuacion" name="actuacion" /></td></tr>
+                    <tr><td>Nota Lecciones: </td><td><input type="text" id="leccion" name="leccion" /></td>
+                    <tr><td>Nota Exámen: </td><td><input type="text" id="examen" name="examen"/></td></tr>
+                    <tr><td>Nota Supletorio: </td><td><input type="text" id="supletorio" name="supletorio"/></td></tr>
+                    <tr><td colspan="2" style="text-align: center;"><button class="btn btn-info" id="guardar">Guardar Cambios</button></td></tr>
+                </table>
+            </form>
+        </div>
+  </div>
+</div>
+<script src="/static/js/jquery-1.8.2.js"></script>
+<script src="/static/js/validCampo.js"></script>
+    <script>
+        var nota=0;
+        var leccion=0;
+        var actuacion=0;
+        var deber=0;
+        var examen=0;
+        var supletorio=0;
+       $("#deber").ValidarCampo("1234567890.")
+        $("#actuacion").ValidarCampo("1234567890.")
+        $("#leccion").ValidarCampo("1234567890.")
+        $("#examen").ValidarCampo("1234567890.")
+        $("#supletorio").ValidarCampo("1234567890.")
+        var filas = $("#tb tbody tr").length;
+        for (var i=2; i<filas;i++){
+             suma=0;
+             n1=$("#tb tr:eq("+i+") td:eq(1)").html()
+             n2=$("#tb tr:eq("+i+") td:eq(2)").html()
+             n3=$("#tb tr:eq("+i+") td:eq(3)").html()
+             n4=$("#tb tr:eq("+i+") td:eq(4)").html()
+             sup=$("#tb tr:eq("+i+") td:eq(5)").html()
+             suma=(parseFloat(n1)+parseFloat(n2)+parseFloat(n3)+parseFloat(n4))/4
+             $("#tb tr:eq("+i+") td:eq(6)").html(suma)
+            if (suma>=9 && suma<15){
+                if(parseFloat(sup)>0) {
+                    res = (suma+parseFloat(sup))/ 2
+                    if (res > 14) {
+                        $("#tb tr:eq(" + i + ") td:eq(7)").html("Aprobado")
+                    }
+                    else {
+                        $("#tb tr:eq(" + i + ") td:eq(7)").html("Reprobado")
+                    }
+                }else{
+                        $("#tb tr:eq("+i+") td:eq(7)").html("Supletorio")
+                    }
+            }else{
+                if (suma<8 && suma>=0){
+                    $("#tb tr:eq("+i+") td:eq(7)").html("Reprobado")
+                }
+                else{
+                    $("#tb tr:eq("+i+") td:eq(7)").html("Aprobado")
+                }
+            }
+            if(sup>0){
+                res=suma/2
+                    if (res>14){
+                        $("#tb tr:eq("+i+") td:eq(7)").html("Aprobado")
+                    }
+                    else{
+                        $("#tb tr:eq("+i+") td:eq(7)").html("Reprobado")
+                    }
+            }
+        }
+    $(document).on("click",".datos",function(){
+        nota=$(this).data("id")
+       $("#nota").val(nota)
+        nombre=$(this).data("nombre")
+       $("#apnom").val(nombre)
+        deber=$(this).data("deber").replace(",",".")
+       $("#deber").val(deber)
+        actuacion=$(this).data("actuacion").replace(",",".")
+        $("#actuacion").val(actuacion)
+        leccion=$(this).data("leccion").replace(",",".")
+        $("#leccion").val(leccion)
+        examen=$(this).data("examen").replace(",",".")
+        $("#examen").val(examen)
+        supletorio=$(this).data("supletorio").replace(",",".")
+        $("#supletorio").val(supletorio)
+    });
+
+</script>

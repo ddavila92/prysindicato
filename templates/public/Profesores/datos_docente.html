@@ -1,0 +1,48 @@
+{% extends "public/Profesores/Pagina_profesores.html" %}
+{% block informacion %}
+    <div class="well" style="margin-top: 30px; background-color: #ffffff !important;">
+        <label for="" style="text-align: center; font-weight: bold">INFORMACIÓN DE LA CUENTA: DATOS DEL DOCENTE</label>
+    <div class="row">
+        <div class="span2">
+            <label for="">Apellidos y Nombres:</label>
+        </div>
+        <div class="span5">
+            <input type="text" value="{{ usuario.last_name }} {{ usuario.first_name }}, {{ profesor.titulo }}" disabled style="width: 100%"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span2">
+            <label for="">Cédula d Id.:</label>
+        </div>
+        <div class="span5">
+            <input type="text" value="{{profesor.cedula}}" disabled />
+        </div>
+    </div>
+    <div class="row">
+        <div class="span2">
+            <label for="">Dirección.:</label>
+        </div>
+        <div class="span5">
+            <input type="text" value="{{profesor.direccion}}" disabled style="width: 100%"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span2">
+            <label for="">Correo electrónico.:</label>
+        </div>
+        <div class="span5">
+            <input type="text" value="{{profesor.correo}}" disabled style="width: 100%"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span2">
+            <label for="">Teléfono.:</label>
+        </div>
+        <div class="span4">
+            <input type="text" value="{{profesor.telefono}}" disabled/>
+        </div>
+    </div>
+    <P>PARA REALIZAR CAMBIOS EN LOS DATOS INFORMATIVOS POR FAVOR CONTÁCTESE CON EL ADMINISTRADOR DEL SISTEMA</P>
+    </div>
+{% endblock %}
+

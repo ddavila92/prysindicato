@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img/65136_103220846512418_471145644_n.jpg" />
+    <script src="/static/bootstrap-3.2.0-dist/js/jquery-1.11.1.min.js"></script>
+    <script src="/static/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css"/>
+    <title>Sindicato de Choferes Profesionales de Pasaje</title>
+</head>
+<body>
+<div id="principal">
+    <div class="row" id="encabezado" style="padding: 10px;background-color:#f5e79e;">
+        <div class="col-lg-2"  style="padding-left: 100px">
+            <img src="/static/img/logo.png"  style="width: 90%;"/>
+        </div>
+        <div class="col-lg-8" style="text-align: center; padding-top: 20px">
+            <label for="" style="font-size: 20px">SINDICATO CANTONAL DE CHOFERES PROFESIONALES DE PASAJE</label>
+        </div>
+        <div class="col-lg-2">
+            <div class="row" style="text-align: center">
+                <img src="/static/img/iconos-personas.png" style="width:30px" alt=""/>
+            </div>
+            <div class="row" style="text-align: center">
+                <label for="">{{ usuario.first_name }} {{ usuario.last_name }}</label>
+                {% if usuario %}
+                    <a href="/Usuarios/cerrar/" style="color: #000000">Cerrar Sesión</a>
+                {% else %}
+                    <a>Bienvenido</a>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    <div class="row" style="background-color: #000000;height: 2px"></div>
+    <div id="cuerpo" class="panel panel-default" style="width: 900px; height:auto; margin: 0 auto; border-radius: 0px">
+
+            <div id="menu">
+                <table style="margin-top: -2px">
+                    <tr style="background-color: #dcdcdc; height: 40px; border:1px solid">
+                        <td style="width: 100px; text-align: center"><a href="/" style="color:#8a6d3b; text-decoration:none"><strong>Inicio</strong></a></td>
+                        <td>|</td>
+                        <td style="width: 100px; text-align: center;"><a href="/Usuarios/micuenta/" style="color:#8a6d3b; text-decoration:none"><strong>Mi Cuenta</strong></a></td>
+                        <td>|</td>
+                        <td style="width: 200px; text-align: center;"><a href="/Enlace/prgacademico/" style="color:#8a6d3b; text-decoration:none"><strong>Programa Académico</strong></a></td>
+                        <td>|</td>
+                        <td style="width: 100px; text-align: center;"><a href="/Enlace/admision/" style="color:#8a6d3b; text-decoration:none"><strong>Admisiones</strong></a></td>
+                        <td>|</td>
+                        <td style="width: 100px; text-align: center;"><a href="/Enlace/servicios/" style="color:#8a6d3b; text-decoration:none"><strong>Servicios</strong></a></td>
+                        <td>|</td>
+                        <td style="width: 100px; text-align: center;"><a href="/Noticias/" style="color:#8a6d3b; text-decoration:none"><strong>Noticias</strong></a></td>
+                        <td>|</td>
+                        <td style="width: 200px; text-align: center;"><a href="/Enlace/acerca_de/" style="color:#8a6d3b; text-decoration:none"><strong>Acerca del Síndicato</strong></a></td></tr>
+                </table>
+            </div>
+        {% block cuerpo %}
+            <div id="carrusel">
+                <div class="panel panel-default" style="padding: 10px; border-radius: 0px">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" style="height: 405px">
+                            <div class="item active" style="width: 100%">
+                                <img src="/static/img/desfile.jpg"/>
+                            </div>
+                            <div class="item" style="width: 100%">
+                                <img src="/static/img/fotos_institucion/escuela.jpg"/>
+                            </div>
+                            <div class="item" style="width: 100%">
+                                <img src="/static/img/fotos_institucion/foto.jpg"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="informacion">
+                <div style="padding: 14px; margin-top: -20px">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="row"  style="padding-left: 20px">
+                                <div class="panel panel-default">
+                                <div class="panel-heading" style="text-align: center">
+                                    <label for="">Nosotros</label>
+                                </div>
+                                <div class="panel-body">
+                                    <ul style="padding: 0px; margin: 0px; list-style: none">
+                                        <li><a href="/" style="color: #000000">Bienvenida</a></li>
+                                        <li><a href="" style="color: #000000">Visión</a></li>
+                                        <li><a href="" style="color: #000000">Misión</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row" id="login" style="padding-left: 20px">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <label for="">Sesión</label>
+                                    </div>
+                                    <div class="panel-body" style="text-align: center">
+                                        {% if usuario %}
+                                            <p style="font-size: 12px">Usuario: {{ usuario.first_name }}</p>
+                                            <a href="/Usuarios/cerrar/">Cerrar Sesión</a>
+                                        {% else %}
+                                            <form action="/" method="post">
+                                            Usuario:
+                                            <input type="text" name="usuario" class="form-control"/>
+                                            Contraseña:
+                                            <input type="password" name="password" class="form-control"/>
+                                            <br/>
+                                            <button class="btn btn-warning" style="width: 100%">Iniciar</button>
+                                            <br/>
+                                        </form>
+                                        <a href="#" style="color: #000000">He olvidado mi Contraseña</a>
+                                        {% endif %}
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                           <div style="padding: 10px">
+                               <label for="">Bienvenida: </label>
+                               <hr style="margin-top: -8px"/>
+                               <div>
+                                   <p style="text-align: justify; font-size: 12px">
+                                       Bienvenidos al Sitio del Sindicato de Choferes Profesionales de Pasaje.
+                                       <br/>
+                                       Es un honor para sus autoridades poner a consideración este espacio de
+                                       comunicación mediante el cual podremos tener un eficiente intercambio de información
+                                       entre autoridades, profesores y estudiantes del sindicato.
+                                       <br/>
+                                       Estamos mejorando, sus sugerencias y comentarios enviarlos a nuestro correo:
+                                       <br/><br/>
+                                       <span class="glyphicon glyphicon-envelope"> </span>&nbsp; sindicatodechoferesdepasaje@outlook.com
+                                       <br/>
+                                       <br/>
+                                       o pueden dejarlos en nuestros sitios de facebook y twitter.
+                                       <br/>
+                                       <br/>
+                                       <div style="text-align: center">
+                                            <img src="/static/img/faustosanmartin.jpg" style="width: 100%" alt=""/>
+                                            <br/>
+                                            Att.
+                                            Sr. Fausto San Martín Cabrera
+                                            <br/>
+                                            SECRETARIO GENERAL
+                                       </div>
+                                   </p>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <label for="">Siguenos en: </label>
+                                </div>
+                                <div class="body" style="padding-left: 10px">
+                                    <table>
+                                        <tr style="height: 60px">
+                                            <td style="width: 70px"><a href="https://www.facebook.com/pages/Sindicato-De-Choferes-Profesionales-De-Pasaje/286462004848821?sk=info&ref=page_internal" target="_blank"><img src="/static/img/facebook.png" width="40px" alt=""/></a></td>
+                                            <td style="width: 70px"><a href="#enlace" target="_blank"><img src="/static/img/twitter.png" width="40px" alt=""/></a></td>
+                                            <td style="width: 70px"><a href="#enlace" target="_blank"><img src="/static/img/gmail.png" width="40px" alt=""/></a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+
+    </div>
+    <br/>
+    <div class="row" style="background-color: #000000;height: 2px"></div>
+    <div style="background-color: #F5E79E; height: 60px; text-align: center; font-size: 10px; padding: 10px">
+        <p style="padding: 0px;margin: 0px;"><strong>Dirección: AV. Rocafuerte, entre las calles Ochoa León y Machala - Pasaje, El Oro, Ecuador</strong></p>
+        <p style="padding: 0px;margin: 0px"><strong>Teléfonos: 2915298, 2918558</strong></p>
+        <p style="padding: 0px;margin: 0px"><strong>Todos los derechos reservados: (c) Jefferson Dávila Cuesta</strong></p>
+
+    </div>
+</div>
+</body>
+</html>

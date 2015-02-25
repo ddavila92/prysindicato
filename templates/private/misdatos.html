@@ -1,0 +1,41 @@
+{% extends "private/micuentalogin.html" %}
+{% block informacion %}
+    <div style="font-size: 12px; margin-top:33px; background-color: #ffffff" class="well">
+        <form action="" method="post">
+            <table>
+                <tr><td colspan="2" style="text-align: center"><label for="">DATOS PERSONALES</label></td></tr>
+                <tr><td style="width: 150px; padding: 5px; text-align: right">Código Estudiante: </td><td style="padding: 5px"><input value="{{ estudiante.id }}" disabled="disabled" name="codigo" type="text" class="form-control"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px; text-align: right">Cédula: </td><td style="padding: 5px;"><input value="{{ estudiante.cedula }}" disabled="disabled" type="text" name="cedula" class="form-control" /></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Nombres: </td><td width="500px" style="padding: 5px"><input name="nombres" value="{{ usuario.first_name }}"  type="text" class="form-control" style="width: 100%"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">E-mail: </td><td width="500px" style="padding: 5px"><input name="email" value="{{ usuario.email }}" disabled="disabled" type="text" class="form-control" style="width: 100%"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Apellidos: </td><td width="500px" style="padding: 5px"><input name="apellidos" value="{{ usuario.last_name }}"  type="text" class="form-control" style="width: 100%"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Certificado de Votación: </td><td width="500px" style="padding: 5px"><input name="certificado_votacion" value="{{ estudiante.cert_votacion }}"  type="text" class="form-control"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Fecha de Nacimiento: </td><td width="500px" style="padding: 5px"><input name="fecha_nacimiento" value="{{ estudiante.fecha_nacimiento }}" disabled="disabled" type="text" class="form-control"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Lugar de Nacimiento: </td><td width="500px" style="padding: 5px"><input name="lugar_nacimiento" value="{{ estudiante.lugar_nacimiento}}"  type="text" class="form-control"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Nacionalidad: </td><td width="500px" style="padding: 5px"><input name="nacionalidad" value="{{ estudiante.nacionalidad }}"  type="text" class="form-control"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Sexo: </td><td width="500px" style="padding: 5px"><input name="sexo" value="{{ estudiante.sexo }}" disabled="disabled" type="text" class="form-control"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Teléfono: </td><td width="500px" style="padding: 5px"><input name="telefono" value="{{ estudiante.telefono }}" type="text" class="form-control"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Tipo de sangre: </td><td width="500px" style="padding: 5px"><input name="tipo_sangre" value="{{ estudiante.tipo_sangre}}"  type="text" class="form-control"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Dirección: </td><td width="500px" style="padding: 5px"><input name="direccion" value="{{ estudiante.direccion }}"  type="text" class="form-control" style="width: 100%"/></td></tr>
+                <tr><td colspan="2" style="text-align: center"><label for="">Información Académica</label></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Colegio: </td><td width="500px" style="padding: 5px"><input name="nombre_colegio" value="{{ estudiante.nombre_colegio }}" type="text" class="form-control" style="width: 100%"/></td></tr>
+                <tr><td style="width: 150px; padding: 5px;text-align: right">Año de Graduación: </td><td width="500px" style="padding: 5px"><input name="anio_graduacion" value="{{ estudiante.anio_graduacion}}" type="text" class="form-control"/></td></tr>
+            </table>
+            <div style="padding: 10px; text-align: center">
+                <button class="btn btn-info">Guardar Cambios</button>
+            </div>
+        </form>
+
+    </div>
+    <script>
+        var mensaje='{{ msj }}'
+        var con=0;
+        console.log(mensaje)
+       // setTimeout(function(){
+            if (mensaje.length>0){
+                location.href="/Usuarios/micuenta/misdatos/"
+                con=1
+            }
+       // },3000)
+    </script>
+{% endblock %}

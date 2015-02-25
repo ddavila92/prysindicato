@@ -1,0 +1,75 @@
+{% extends "public/Profesores/Pagina_profesores.html" %}
+{% block informacion %}
+    <div class="well" style="margin-top: 30px" id="bus">
+        <table>
+            <tr>
+                <td style="width: 100px; text-align: right">Período: </td>
+                <td colspan="3">
+                    <select name="periodo" id="periodo" style="width: 95%">
+                        {% for periodo in periodos %}
+                            <option value="{{ periodo.id }}">{{ periodo.fecha_inicio }} - {{ periodo.fecha_fin }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">Materia: </td>
+                <td colspan="3">
+                    <select name="materia" id="materia" style="width: 95%">
+                    {% for materia in materias %}
+                        <option value="{{ materia.id }}">{{ materia.materia }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 100px; text-align: right">Sección:</td>
+                <td style="width: 250px">
+                    <select name="seccion" id="seccion" style="width: 100%">
+                    {% for seccion in secciones %}
+                        <option value="{{ seccion.id }}">{{ seccion.seccion }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+                <td style="text-align: right">Paralelo: </td>
+                <td style="width: 250px">
+                    <select name="paralelo" id="paralelo" style="width: 90%">
+                    {% for paralelo in paralelos %}
+                        <option value="{{ paralelo.id }}">{{ paralelo.paralelo }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr><td colspan="4" style="text-align: center"><button id="enviar" class="btn btn-info">Buscar</button></td></tr>
+        </table>
+    </div>
+    <div id="contenido">
+
+    </div>
+    <!-- Modal -->
+<div id="mmm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="left: 600px;width: 800px">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel" style="text-align: center">ACTA DE CALIFICACIONES</h3>
+  </div>
+  <div class="modal-body">
+        <div class="panel panel-default" style="width:100%; margin: 0 auto; font-size: 12px">
+            <div id="contenido1">
+
+            </div>
+            <div style="text-align: center">
+                <button id="impp" class="btn btn-info">Imprimir</button>
+            </div>
+        </div>
+  </div>
+</div>
+    <script src="/static/js/jquery-1.8.2.js"></script>
+    <script>
+        $("#enviar").click(function(){
+            $.post("/Notas/actas/",{periodo:$("#periodo").val(), materia:$("#materia").val(),seccion:$("#seccion").val(), paralelo:$("#paralelo").val()},function(data){
+                $("#contenido").html(data)
+                window.open("/Notas/imprimir/"+$("#periodo").val()+"/"+$("#seccion").val()+"/"+$("#paralelo").val()+"/"+$("#materia").val()+"/","Nuevaa ventanta","resizable=false,width=800,height=400")
+            })
+        });
+        </script>
+{% endblock %}

@@ -1,0 +1,155 @@
+
+<div class="well" style="margin-left: 30px; margin-right: 30px">
+    <table class="table table-bordered" id="tb">
+        <tr style="background-color: #65A1B7; color: #ffffff !important;"><th rowspan="2" style="width: 40px">Código</th><th rowspan="2">Apellidos y Nombres</th><th colspan="8" style="text-align: center">Notas</th></tr>
+        <tr style="background-color: #65A1B7; color: #ffffff !important;"><th style="width: 40px">Tareas</th><th style="width: 40px">Actuación</th><th style="width: 40px">Lección</th><th style="width: 40px">Exámen</th><th style="width: 40px">Supletorio</th><th style="width: 40px">Promedio</th><th style="width: 50px">Observación</th><th style="width: 20px; text-align: center"><i class="icon-ok"></i></th></tr>
+        {% if matriculas %}
+            {% for matricula in matriculas %}
+                <tr><td><input class="nn" type="hidden" value="{{ matricula.estudiante.id }}"/>{{ matricula.estudiante.usuario.id }}</td><td>{{ matricula.estudiante.usuario.last_name }} {{ matricula.estudiante.usuario.first_name }}</td><td>
+                    <input type="text" class="nota1" value="0.0"  style="width: 30px"/></td><td><input type="text" class="nota2" value="0.0" style="width: 30px; margin: 0"/></td><td><input type="text" value="0.0" class="nota3"  style="width: 30px; margin: 0"/></td>
+                <td><input type="text" class="nota4" value="0.0" style="width: 30px; margin: 0"/></td><td><input type="text" class="sup" value="0.0" style="width: 30px; margin: 0"/></td><td><p class="promedio" style="margin: 0">0.0</p></td><td><p class="observacion" style="margin: 0">Supletorio</p></td>
+                <td><button class="btn btn-success valor" style="margin: 0px;"><i class="icon-ok-sign"></i></button></td></tr>
+            {% endfor %}
+        {% else %}
+            <tr><td colspan="10">Todos los estudiantes ya tienen notas registradas, en esa asignatura</td></tr>
+        {% endif %}
+
+
+    </table>
+</div>
+<div id="res"></div>
+<script src="/static/js/jquery-1.8.2.js"></script>
+<script src="/static/js/validCampo.js"></script>
+<script>
+
+        var rowIndex = $('#tb tr').index($(this).closest('tr'));
+        id=$("#tb tr:eq("+rowIndex+") td:eq(0)").html()
+        n1=$("#tb tr:eq("+rowIndex+") td:eq(2)").html()
+        n2=$("#tb tr:eq("+rowIndex+") td:eq(3)").html()
+        n3=$("#tb tr:eq("+rowIndex+") td:eq(4)").html()
+        n4=$("#tb tr:eq("+rowIndex+") td:eq(5)").html()
+        sup=$("#tb tr:eq("+rowIndex+") td:eq(6)").html()
+        $("#res").html(id+n1+n2+n3+n4+sup)
+        $("#res").hide()
+
+    $(".nota1").ValidarCampo("1234567890.");
+    $(".nota2").ValidarCampo("1234567890.");
+    $(".nota3").ValidarCampo("1234567890.");
+    $(".nota4").ValidarCampo("1234567890.");
+    $(".sup").ValidarCampo("1234567890.");
+    $(".nota1").keyup(function() {
+        $(this).each(function () {
+            var nota = $(this).val();
+            var rowIndex = $('#tb tr').index($(this).closest('tr'));
+            promedio(rowIndex)
+            validar_120(this)
+            console.log("la nota es: " + nota)
+            $("#res .nota1").val(nota)
+
+        });
+    });
+    $(".nota2").keyup(function() {
+        $(this).each(function () {
+            var rowIndex = $('#tb tr').index($(this).closest('tr'));
+            promedio(rowIndex)
+            var nota = $(this).val();
+            validar_120(this)
+            console.log("la nota es: " + nota)
+            $("#res .nota2").val(nota)
+        });
+    });
+    $(".nota3").keyup(function() {
+        $(this).each(function () {
+            var rowIndex = $('#tb tr').index($(this).closest('tr'));
+            promedio(rowIndex)
+            var nota = $(this).val();
+            validar_120(this)
+            console.log("la nota es: " + nota)
+            $("#res .nota3").val(nota)
+        });
+    });
+    $(".nota4").keyup(function() {
+        $(this).each(function () {
+            var rowIndex = $('#tb tr').index($(this).closest('tr'));
+            promedio(rowIndex)
+            var nota = $(this).val();
+            validar_120(this)
+            console.log("la nota es: " + nota)
+            $("#res .nota4").val(nota)
+        });
+    });
+    $(".sup").keyup(function() {
+        $(this).each(function () {
+            validar_120(this)
+            var rowIndex = $('#tb tr').index($(this).closest('tr'));
+            promedio(rowIndex)
+            var nota = $(this).val();
+            $("#res .sup").val(nota)
+            console.log("la nota es: " + nota)
+            supletorio(promedio(rowIndex),rowIndex)
+        });
+    });
+    $(".valor").click(function() {
+       // $("#res").hide()
+        var rowIndex = $('#tb tr').index($(this).closest('tr'));
+        promedio(rowIndex);
+        p=$("#periodo").val();
+        s=$("#seccion").val();
+        pa=$("#paralelo").val();
+        $.post("/Notas/registro/",{materia:$("#materia").val(),estudiante:$("#res .nn").val(),deber:$("#res .nota1").val(),
+                                    leccion:$("#res .nota2").val(),actuacion:$("#res .nota3").val(),examen:$("#res .nota4").val(),
+                                    supletorio:$("#res .sup").val(),periodo:p,seccion:s,paralelo:pa},function(data){
+            $("#contenido").html(data)
+        })
+        $("#res .nota1").val("0.0")
+        $("#res .nota2").val("0.0")
+        $("#res .nota3").val("0.0")
+        $("#res .nota4").val("0.0")
+        //alert("estudiante:"+x+" nota1:"+n1)
+    });
+        function promedio(fila) {
+            console.log("notas")
+            n1 =parseFloat($("#res .nota1").val())
+            n2 =parseFloat($("#res .nota2").val())
+            n3 =parseFloat($("#res .nota3").val())
+            n4 =parseFloat($("#res .nota4").val())
+            prom = (n1 + n2 + n3 + n4) / 4;
+            $("#tb tr:eq("+fila+") td:eq(7)").html(prom)
+            //$(".promedio").text(prom);
+            if (prom > 14) {
+                $("#tb tr:eq(" + fila + ") td:eq(8)").html("Aprobado")
+            }
+            else {
+                if (prom < 14 && prom > 9) {
+                    $("#tb tr:eq(" + fila + ") td:eq(8)").html("Supletorio")
+                }
+                else {
+                    $("#tb tr:eq(" + fila + ") td:eq(8)").html("Reprobado")
+                }
+            }
+            return prom
+        }
+
+
+        function supletorio(promedio,fila){
+            sup=parseFloat($("#res .sup").val());
+            if (parseFloat(promedio)<14 && parseFloat(promedio)>=9 && sup>0 ){
+                pr=(promedio+sup)/2
+                $("#tb tr:eq("+fila+") td:eq(7)").html(pr)
+                if (pr>14){
+                    $("#tb tr:eq(" + fila + ") td:eq(8)").html("Aprobado")
+                }
+                else{
+                    $("#tb tr:eq(" + fila + ") td:eq(8)").html("Reprobado")
+                }
+            }
+        }
+            function validar_120(campo) {
+                c = parseFloat($(campo).val());
+                console.log("numero es: " + c)
+                if (c > 20 || c < 0) {
+                    $(campo).val(0.0)
+                }
+            }
+
+</script>

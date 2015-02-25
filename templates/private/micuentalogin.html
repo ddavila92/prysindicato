@@ -1,0 +1,57 @@
+{% extends "freeme/index.html" %}
+{% block cuerpo %}
+    <div style="padding: 10px">
+       <div class="row well " style="margin-left: 20px; margin-right: 20px">
+            <div class="span3" style="margin-top: 30px">
+                <ul class="nav nav-list well" style="background-color: #ffffff !important">
+                    <li class="nav-header" style="font-size: 14px; height: 40px">Opciones: </li>
+                    <li><a href="/Usuarios/micuenta/misdatos/" style="color: #000000; font-size: 12px"><span class="glyphicon glyphicon-user text-warning">&nbsp;&nbsp;</span>Mis Datos</a></li>
+                     <li class="divider"></li>
+                    <li><a href="/Matricula/estudiante/" style="color: #000000; font-size: 12px"><span class="glyphicon glyphicon-list-alt text-warning">&nbsp;&nbsp;</span>Matrícula</a></li>
+                     <li class="divider"></li>
+                    <li><a href="/Notas/" style="color: #000000; font-size: 12px"><span class="glyphicon glyphicon-file text-warning">&nbsp;&nbsp;</span>Notas</a></li>
+                     <li class="divider"></li>
+                    <li><a href="/Turnos/" style="color: #000000; font-size: 12px"><span class="glyphicon glyphicon-bookmark text-warning">&nbsp;&nbsp;</span>Gestionar Turnos</a></li>
+                     <li class="divider"></li>
+                    <li><a href="/Usuarios/micuenta/record_policial/" style="color: #000000; font-size: 12px"><span class="glyphicon glyphicon-warning-sign text-warning">&nbsp;&nbsp;</span>Record Policial</a></li>
+                </ul>
+            </div>
+            <div class="span8" style="height: auto; font-size: 12px">
+                {% block informacion %}
+                    <div style="width: 600px; margin-top: 30px" class="well">
+                        <div class="row" style="text-align: justify; font-size: 14px; margin-left: 10px">
+                            <label for="" class="label label-info" style="text-align: center; padding: 5px">REQUISITOS PARA LA MATRICULA</label>
+                        </div>
+                        <div class="row well" style="margin-left: 10px; background-color: #ffffff">
+                            <ul>
+                                <li>2 copias de la Cédula de Identidad</li>
+                                <li>1 copia del certificado de votación</li>
+                                <li>1 Copia del Título de Bachiller, Certificada por el Distrito de Educación Provincial,
+                                    en caso de no contar con este requerimiento, traer certificación original de haber cursado
+                                    el Primer Año de Bachilerato</li>
+                                <li>Tipo de Sangre de la Crus Roja y 1 copia a color</li>
+                                <li>4 Fotos tamaño carnet</li>
+                                <li>Record Policial</li>
+                                <li>Comprobante de Pago de Matricula</li>
+                                <li>Acuerdo de Compromiso</li>
+                                <li>Hoja Impresa de la Matricula Generada por el sistema</li>
+                                <li>Aprobar el examen psicosensometrico en las instalaciones de la escuela de capacitación</li>
+                                <li>Aprobar el examen psicológico en las instalaciones de la escuela de capacitación</li>
+                                <li>Certificado médico (centro médico autorizado del M.S.P)</li>
+                            </ul>
+                        </div>
+                        <div class="row" style="text-align: justify; font-size: 14px; margin-left: 10px">
+                            <label for="" class="label label-info" style="text-align: center; padding: 5px">HORARIOS A ELEGIR</label>
+                        </div>
+                        <div class="row well" style="padding: 10px;margin-left:10px; background-color: #ffffff">
+                            <ul>
+                                <li>Lunes a Viernes de 18:30 a 22:30 (6 meses)</li>
+                                <li>Sábados y Domingos de 8:00 a 13:00 (7 meses)</li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

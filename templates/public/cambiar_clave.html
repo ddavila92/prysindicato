@@ -1,0 +1,45 @@
+{% extends "public/Profesores/Pagina_profesores.html" %}
+{% block informacion %}
+    <div class="well" style="margin-top: 30px">
+        <div class="row" style="text-align: center; font-weight: bold">
+            <p>CAMBIAR CLAVE:</p>
+        </div>
+        <div>
+            <form action="" method="post">
+                <div class="row">
+                    <div class="span2">
+                    Contraseña Actual
+                    </div>
+                    <div class="span5">
+                        <input type="password" name="password" style="width: 100%"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                    Contraseña Nueva
+                    </div>
+                    <div class="span5">
+                        <input type="password" name="password1" style="width: 100%"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">
+                    Contraseña Nueva
+                    </div>
+                    <div class="span5">
+                        <input type="password" name="password2" style="width: 100%"/>
+                    </div>
+                </div>
+                <div class="row" style="text-align: center; padding: 10px">
+                    <button class="btn btn-info">Enviar datos</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if msj %}
+        <div class="alert alert-info">
+            <p>{{ msj }}</p>
+        </div>
+    {% endif %}
+
+{% endblock %}

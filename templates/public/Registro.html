@@ -1,0 +1,200 @@
+{% extends "freeme/index.html" %}
+{% block cuerpo %}
+    <div class="well" style="margin-left: 30px; margin-right: 30px">
+    <div class="row" style="padding: 15px; text-align: center">
+        <label for="" class="label label-info" style="padding: 3px">REGISTRO DE USUARIOS</label>
+    </div>
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Nombres:</label>
+            </div>
+            <div class="span9">
+                <input type="text" style="width: 100%" name="nombres" class="form-control" placeholder="Escriba sus nombres completos"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+                <div class="span2">
+                    <label for="">Apellidos:</label>
+                </div>
+                <div class="span9">
+                    <input type="text" style="width: 100%" name="apellidos" class="form-control" placeholder="Escriba sus apellidos completos"/>
+                </div>
+            </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Cédula de I.D.:</label>
+            </div>
+            <div class="span9">
+                <input type="text" name="cedula" class="form-control" placeholder="Escriba su Cédula de Identidad"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span3">
+                <label for="">Certificado de Votación:</label>
+            </div>
+            <div class="span9" style="margin-left: -60px">
+                <input type="text" name="certificado_votacion" class="form-control" placeholder="Escriba el número del certificado"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Lugar Nacimiento:</label>
+            </div>
+            <div class="span9">
+                <input type="text" name="lugar_nacimiento" class="form-control" placeholder="Escriba el lugar de nacimiento"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Tipo de sangre.:</label>
+            </div>
+            <div class="span9">
+                <select name="tipo_sangre" id="" class="form-control">
+                    <option value="O-">O-</option>
+                    <option value="O+">O+</option>
+                    <option value="A-">A−</option>
+                    <option value="A+">A+</option>
+                    <option value="B−">B-</option>
+                    <option value="B+">B+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="AB+">AB+</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Fecha de Nacimiento:</label>
+            </div>
+            <div class="span9">
+                <input type="date" name="fecha_nacimiento" class="form-control" placeholder="Seleccione"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Sexo:</label>
+            </div>
+            <div class="span9">
+                <select name="sexo" id="sexo" class="form-control">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Nacionalidad</label>
+            </div>
+            <div class="span9">
+                <input type="text" name="nacionalidad" class="form-control" placeholder="Escriba su Nacionalidad"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Teléfono: </label>
+            </div>
+            <div class="span9">
+                <input type="tel" name="telefono" placeholder="Escriba su número de telefono" class="form-control"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Dirección: </label>
+            </div>
+            <div class="span9">
+                <input type="text" style="width: 100%" name="direccion" placeholder="Escriba su dirección de domicilio" class="form-control"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Colegio:</label>
+            </div>
+            <div class="span9">
+                <input type="text" style="width: 100%" name="nombre_colegio" class="form-control" placeholder="Nombre del Colegio"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Año de Graduación:</label>
+            </div>
+            <div class="span9">
+                <input type="number" min="1900" max="2500" name="anio_graduacion" class="form-control" placeholder="Escriba el año de graduación"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">E-mail: </label>
+            </div>
+            <div class="span9">
+                <input type="email" style="width: 100%" name="email" placeholder="Correo electrónico: ejemplo@proveedor.com" class="form-control"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Contraseña: </label>
+            </div>
+            <div class="span9">
+                <input type="password" name="password" placeholder="Escriba una contraseña" class="form-control"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Repetir Contraseña: </label>
+            </div>
+            <div class="span9">
+                <input type="password" name="password1" placeholder="Vuelva a escribir la contraseña" class="form-control"/>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px">
+            <div class="span2">
+                <label for="">Captcha: </label>
+            </div>
+            <div class="span6">
+                <input type="text" style="width: 100%" name="captcha" placeholder="Escriba el código captcha de la derecha" class="form-control"/>
+                <input type="hidden" name="captcha1" value="{{ captcha }}"/>
+            </div>
+            <div class="span3">
+                <div style="height: 30px;padding: 5px; background-color: #000000; width: 100%; color: #ffffff; width: 200px; text-align: center;">{{ captcha }}</div>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px; text-align: center">
+            <button class="btn btn-info">Enviar Datos</button>
+            <a class="btn btn-primary" href="/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Volver&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+        </form>
+    </div>
+
+    <!-- modal-->
+    <div id="myModalregitrar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel" style="text-align: center">MENSAJE DEL SISTEMA</h3>
+  </div>
+  <div class="modal-body">
+        <div class="row">
+            <div class="span2">
+                <img src="/static/img/logo.png" alt="" style="width: 100%">
+            </div>
+            <div class="span4">
+                <br>
+                <p><label for="">{{ mensaje }}</label> </p>
+                <p>Inicia su sesión dando clic <a href="/">Aquí</a></p>
+            </div>
+        </div>
+  </div>
+</div>
+<div style="height: 30px">
+</div>
+    <script src="/static/js/jquery-1.8.2.js"></script>
+    <script>
+    $(document).ready(function(){
+        var mensaje='{{ mensaje }}'
+        if (mensaje.length>0)
+        {
+            $("#myModalregitrar").modal("show");
+        }
+    })
+
+    </script>
+{% endblock %}

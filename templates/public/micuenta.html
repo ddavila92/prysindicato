@@ -1,0 +1,22 @@
+{% extends "freeme/index.html" %}
+{% block cuerpo %}
+    <div style="padding: 10px; text-align: center; height: 300px; width: 600px; margin: 0 auto;font-size: 12px" class="well">
+        <label for="" class="label label-info" style="text-align: center; padding: 5px; font-size: 12px">PARA INGRESAR A ESTA SECCIÓN ES NECESARIO INICIAR SESIÓN: </label>
+        <div class="panel panel-default" style="width: 500px; margin: 0 auto; font-size: 12px">
+            <form action="/" method="post" style="font-size: 12px; padding: 20px">
+                <table>
+                    <tr><td style="padding: 5px; width: 40px">Correo: </td><td style="padding: 5px; width: 500px"><input type="text" name="usuario" class="form-control" style="width: 100%"/></td></tr>
+                     <tr><td style="padding: 5px">Contraseña: </td><td style="padding: 5px"><input type="password" name="password" class="form-control" style="width: 100%"/></td></tr>
+                     <tr><td style="padding: 5px; text-align: center" colspan="2"><button class="btn btn-info">Iniciar Sesión</button></td></tr>
+                </table>
+            </form>
+        </div>
+       <!-- <a href="#">He olvidado mi contraseña</a>-->
+        <br/>
+        <a href="/Usuarios/registro/">No tengo Cuenta</a>
+        <br/>
+    </div>
+    <div style="height: 30px">
+
+    </div>
+{% endblock %}

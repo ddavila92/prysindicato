@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Pagina de Activación de Cuentas</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.2.0-dist/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="" style="text-align: center; width:300px;margin: 0 auto">
+    <img src="/static/img/logo.png" style="width: 60%" alt=""/>
+</div>
+<br/>
+<div class="panel panel-danger" style="width: 700px; margin: 0 auto; padding-top: 10px; text-align: center; height: 100px">
+    <label for="">BIENVENIDO A NUESTRO SISTEMA DE VALIDACIÓN DE CUENTAS DE USUARIO</label>
+    <br/>
+    {% if usuario %}
+         <p>Nombre: {{ usuario.first_name }} {{ usuario.last_name }}</p>
+    {% endif %}
+<p>{{ mensaje|safe }}</p>
+</div>
+
+
+</body>
+</html>

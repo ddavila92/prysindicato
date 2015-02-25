@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>SINDICATO CANTONAL DE CHOFERES PROFESIONALES DE PASAJE</title>
+	<meta name="description" content="FreeME:Bootstrap Theme"/>
+	<meta name="keywords" content="Template, Theme, web, html5, css3" />
+	<meta name="author" content="Łukasz Holeczek from creativeLabs"/>
+	<!-- end: Meta -->
+	
+	<!-- start: Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- end: Mobile Specific -->
+	
+	<!-- start: Facebook Open Graph -->
+	<meta property="og:title" content=""/>
+	<meta property="og:description" content=""/>
+	<meta property="og:type" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:image" content=""/>
+	<!-- end: Facebook Open Graph -->
+
+    <!-- start: CSS -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="/static/css/style.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
+	<!-- end: CSS -->
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel" style="text-align: center">INICIAR SESIÓN</h3>
+  </div>
+  <div class="modal-body">
+        <div class="panel panel-default" style="width: 500px; margin: 0 auto; font-size: 12px">
+            <form action="/" method="post" style="font-size: 12px; padding: 20px">
+                <table>
+                    <tr><td style="padding: 5px; width: 40px">Correo: </td><td style="padding: 5px; width: 500px"><input type="text" name="usuario" class="form-control" style="width: 100%"/></td></tr>
+                     <tr><td style="padding: 5px">Contraseña: </td><td style="padding: 5px"><input type="password" name="password" class="form-control" style="width: 100%"/></td></tr>
+                     <tr><td style="padding: 5px; text-align: center" colspan="2"><button class="btn btn-info">Iniciar Sesión</button></td></tr>
+                </table>
+            </form>
+        </div>
+  </div>
+</div>
+<!--start: Wrapper -->
+	<div id="wrapper">
+<!--start: Container -->
+		<div class="container">
+<!--start: Header -->
+			<header>
+<!--start: Row -->
+				<div class="row" id="cabeza">
+<!--start: Logo -->
+                    <div class="logo span2" style="margin-top: -10px">
+                        <img src="/static/img/logo.png" alt="" style="width:130px"/>
+                    </div>
+					<div class="span5">
+						<h1 style="font-size: 25px">SINDICATO CANTONAL DE CHOFERES PROFESIONALES DE PASAJE</h1>
+					</div>
+                    <div class="span2" style="margin-top: 30px">
+                        <img src="/static/img/logo-ant.png" alt=""/>
+                    </div>
+					<!--end: Logo -->
+					
+					<!--start: Social Links -->
+					<div class="span3">
+						<div id="social-links">
+							<ul class="social-small-grid">
+								<li>
+									<div class="social-small-item">				
+										<div class="social-small-info-wrap">
+											<div class="social-small-info">
+												<div class="social-small-info-front social-small-twitter">
+													<a target="_blank" href="http://twitter.com"></a>
+												</div>
+												<div class="social-small-info-back social-small-twitter-hover">
+													<a target="_blank" href="http://twitter.com"></a>
+												</div>	
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="social-small-item">				
+										<div class="social-small-info-wrap">
+											<div class="social-small-info">
+												<div class="social-small-info-front social-small-facebook">
+													<a target="_blank" href="https://www.facebook.com/pages/Sindicato-De-Choferes-Profesionales-De-Pasaje/286462004848821?fref=ts"></a>
+												</div>
+												<div class="social-small-info-back social-small-facebook-hover">
+													<a target="_blank" href="https://www.facebook.com/pages/Sindicato-De-Choferes-Profesionales-De-Pasaje/286462004848821?fref=ts"></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="social-small-item">				
+										<div class="social-small-info-wrap">
+											<div class="social-small-info">
+												<div class="social-small-info-front social-small-dribbble">
+													<a target="_blank" href="http://www.ant.gob.ec/"></a>
+												</div>
+												<div class="social-small-info-back social-small-dribbble-hover">
+													<a target="_blank" href="http://www.ant.gob.ec/"></a>
+												</div>	
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--end: Social Links -->
+                    <div style="text-align: right">
+                        {% if usuario %}
+                            <p>Usuario: {{ usuario.first_name }} {{ usuario.last_name }}</p>
+                        {% endif %}
+                    </div>
+
+				</div>
+				<!--end: Row -->
+						
+			</header>
+			<!--end: Header-->
+			<!--start: Navigation-->	
+			<div class="navbar navbar-inverse" style="margin-top: 30px;">
+    			<div class="navbar-inner">
+        			<div class="container">
+          				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            				<span class="icon-bar"></span>
+            				<span class="icon-bar"></span>
+            				<span class="icon-bar"></span>
+          				</a>
+          				<div class="nav-collapse collapse" >
+            				<ul class="nav">
+              					<li class="active"><a href="/">Inicio</a></li>
+              					<li><a href="/Usuarios/micuenta/">Mi Cuenta</a></li>
+								<li><a href="/Enlace/prgacademico/">Programa Acádemico</a></li>
+								<li><a href="/Enlace/admision/">Admisiones</a></li>
+                                <li><a href="/Noticias/">Noticias</a></li>
+                                <li><a href="/Enlace/acerca_de/">Acerca de</a></li>
+                                {% if usuario %}
+                                    <li><a href="/Usuarios/cerrar/">Cerrar Sesión</a></li>
+                                {% else %}
+                                    <li><a href="#myModal" data-toggle="modal">Iniciar Sesión</a></li>
+                                {% endif %}
+
+            				</ul>
+          				</div>
+        			</div>
+      			</div>
+    		</div>
+			<!--end: Navigation-->
+		</div>
+		<!--end: Container-->
+        {% block cuerpo %}
+            <div class="container" id="cont">
+			<!-- start: Flexslider -->
+			<div class="slider" style="height: 405px" >
+				<div class="flexslider" style="height: 405px">
+					<ul class="slides">
+						<li>
+                            <div style="width: 100%">
+                                <img src="/static/img/fotos_institucion/escuela.jpg" />
+                            </div>
+						</li>
+						<li>
+                            <div style="width: 100%">
+                                <img src="/static/img/desfile.jpg"/>
+                            </div>
+						</li>
+						<li>
+                            <div style="width: 100%">
+							    <img src="/static/img/fotos_institucion/escuela.jpg" />
+                            </div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+			<!-- end: Flexslider -->
+
+      		<!-- start: Hero Unit - Main hero unit for a primary marketing message or call to action -->
+            <br/><br/><br/>
+      		<div class="hero-unit">
+                Bienvenidos al Sitio del Sindicato de Choferes Profesionales de Pasaje. <br/>
+                Es un honor para sus autoridades poner a consideración este espacio de
+                comunicación mediante el cual podremos tener un eficiente intercambio de información
+                entre autoridades, profesores y estudiantes del sindicato. <br/>
+            </div>
+			<!-- end: Hero Unit -->
+
+      		<!-- start: Row -->
+      		<div class="row">
+
+        		<div class="span4">
+          			<div class="icons-box">
+                        <img src="/static/img/capacitacion.jpg" alt=""/>
+                        <br/>
+						<div class="title"><h3>Instructores Capacitados</h3></div>
+                        <p style="text-align: justify">
+                            Contamos con instructores altamente calificados en conducción, ley de tránsito y trato al cliente, con gran experiencia.
+                        </p>
+						<div class="clear"></div>
+					</div>
+        		</div>
+
+        		<div class="span4">
+          			<div class="icons-box">
+                        <img src="/static/img/personalizada.jpg" alt=""/>
+						<div class="title"><h3>Ambiente Confortable</h3></div>
+                        <p style="text-align: justify">
+                            Los salones donde se brindan las clases cuentan con aires acondicionado y proyectores para una correcta enseñanza acorde a las necesidades actuales.
+                        </p>
+						<div class="clear"></div>
+					</div>
+        		</div>
+
+        		<div class="span4">
+          			<div class="icons-box">
+                        <img src="/static/img/manejo.jpg" alt=""/>
+						<div class="title"><h3>Vehículos Especializados</h3></div>
+						<p style="text-align: justify">
+							Vehículos avalados por la Agencia Nacional de Tránsito,todos son vehiculos del año, confortables y con todo el equipo necesario para el aprendizaje del estudiante.
+						</p>
+						<div class="clear"></div>
+					</div>
+        		</div>
+
+      		</div>
+			<!-- end: Row -->
+
+			<hr>
+
+			<!-- start Clients List -->
+			<div class="hero-unit">
+                Noticias:
+            </div>
+            <div class="clients-carousel">
+				<ul class="slides clients">
+					{% for noticia in noticias %}
+                       <li><a href="/Noticias/{{  noticia.id }}"><img src="/media/{{ noticia.imagen }}" style=" width:100%;height: 100px" alt=""/></a></li>
+					{% endfor %}
+
+				</ul>
+
+			</div>
+			<!-- end Clients List -->
+
+			<hr>
+			<!-- start: Row -->
+			<div class="row">
+				<!-- start: Icon Boxes -->
+				<div class="icons-box-vert-container">
+					<!-- start: Icon Box Start -->
+					<div class="span6">
+						<div class="icons-box-vert">
+							<i class="ico-ok ico-color circle-color big"></i>
+							<div class="icons-box-vert-info">
+								<h3>Misión: </h3>
+								<p style="text-align: justify">
+                                    Formar conductores profesionales conscientes de su identidad, con gran sentido de
+                                    respeto, responsabilidad y solidaridad, de formación humanística con actitud
+                                    técnica-científica, capacidad de liderazgo, pensamiento crítico y alta cognición
+                                    ciudadana , comprometidos con el cambio social y sobre todo transformando ciertos
+                                    paradigmas, reemplazando con esquemas y marcos conceptuales modernos que permita al
+                                    nuevo conductor profesional tomar conciencia del rol que desempeña en la sociedad,
+                                    capaces de proporcionar e implantar alternativas de solución a los problemas de la
+                                    colectividad, para promover el desarrollo integral de la ciudad, la provincia y el
+                                    país.
+                                </p>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<!-- end: Icon Box-->
+
+					<!-- start: Icon Box Start -->
+					<div class="span6">
+						<div class="icons-box-vert">
+							<i class="ico-certificate  ico-white circle-color-full big-color"></i>
+							<div class="icons-box-vert-info">
+								<h3>Visión: </h3>
+								<p style="text-align: justify">
+                                    La escuela de formación y capacitación de conductores profesionales de Pasaje
+                                    propende alcanzar una verdadera excelencia educativa en el nuevo conductor
+                                    profesional en base al cultivo de principios y valores, en concordancia con el
+                                    avance de la técnica y la ciencia, con la aplicación de la normativa del nuevo
+                                    reglamento para las escuelas de capacitación e institutos superiores, con un
+                                    pensum de estudios modificado y reformado de acuerdo de acuerdo a las exigencias
+                                    modernas y la participación directa de todos los organismos involucrados en el
+                                    tránsito y transportes terrestres del país.
+                                </p>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<!-- end: Icon Box -->
+				<div class="clear"></div>
+			</div>
+			<!-- end: Row -->
+
+			<hr>
+
+		</div>
+		<!--end: Container-->
+
+		<!--start: Container -->
+    	<div class="container">
+      		<!-- start: Footer Menu -->
+			<div id="footer-menu" class="hidden-tablet hidden-phone">
+				<!-- start: Container -->
+				<div class="container">
+					<!-- start: Row -->
+					<div class="row">
+						<!-- start: Footer Menu Logo -->
+						<div class="span1">
+							<div id="footer-menu-logo">
+								<a href="#"><img src="/static/imgs/logo-footer-menu.png" alt="logo" /></a>
+							</div>
+						</div>
+						<!-- end: Footer Menu Logo -->
+						<!-- start: Footer Menu Links-->
+						<!-- start: Footer Menu Back To Top -->
+						<div class="span1">
+							<div id="footer-menu-back-to-top">
+								<a href="#"></a>
+							</div>
+						</div>
+						<!-- end: Footer Menu Back To Top -->
+					</div>
+					<!-- end: Row -->
+				</div>
+				<!-- end: Container  -->
+			</div>
+			<!-- end: Footer Menu -->
+		</div>
+		<!-- end: Container  -->
+	</div>
+        {% endblock %}
+</div>
+<!-- end: Wrapper  -->
+	<!-- start: Copyright -->
+	<div id="copyright">
+	<!-- start: Container -->
+		<div class="container">
+				<p>
+					&copy; 2015, Desarrollado por: Jefferson Dávila.
+                    <br/>
+                    Todos los derechos reservados por: Sindicato de Choferes Profesionales de Pasaje
+                    <img src="/static/imgs/poland.png" alt="Poland" style="margin-top:-4px">
+				</p>
+		</div>
+		<!-- end: Container  -->
+
+	</div>
+	<!-- end: Copyright -->
+
+<!-- start: Java Script -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="/static/js/jquery-1.8.2.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/flexslider.js"></script>
+<script src="/static/js/carousel.js"></script>
+<script def src="/static/js/custom.js"></script>
+<script>
+    $(document).ready(function(){
+       mm='{{ code }}';
+        setTimeout(function(){
+            if (mm==1){
+            location.href="/admin/"
+        }
+        },200)
+
+    });
+</script>
+<!-- end: Java Script -->
+
+</body>
+</html>

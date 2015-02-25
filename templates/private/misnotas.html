@@ -1,0 +1,54 @@
+{% extends "private/micuentalogin.html" %}
+{% block informacion %}
+    <div class="well" style="padding: 20px; margin: 10px;height:auto; margin-top: 33px; background-color: #ffffff !important;">
+        {% if notas %}
+            <div class="row" style="text-align: center"><label for="">NOTAS DEL ESTUDIANTE</label></div>
+            <div class="row" style="text-align: center;margin: 0 auto">
+                <table class="table table-bordered table-striped" id="tb">
+                    {% for nota in notas %}
+                        <tr><th colspan="7" style="text-align: center">{{ nota.materia.materia }}</th></tr>
+                        <tr><th style="text-align: center">Actuación</th><th style="text-align: center">Deberes</th><th style="text-align: center">Lecciones</th><th style="text-align: center">Exámen</th><th>Supletorio</th><th>Promedio</th><th>Observación</th></tr>
+                        <tr><td>{{ nota.actuacion }}</td><td>{{ nota.deber }}</td><td>{{ nota.leccion }}</td><td>{{ nota.examen }}</td><td>{{ nota.supletorio }}</td><td>--</td><td>--</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% else %}
+            <div class="row" style="text-align: center"><label for="">LAS NOTAS NO HAN SIDO PUBLICADAS</label></div>
+        {% endif %}
+    </div>
+    <script src="/static/js/jquery-1.8.2.js"></script>
+    <script>
+
+        var filas = $("table tbody tr").length;
+        for (var i=1; i<=filas;i++){
+             suma=0;
+             n1=$("#tb tr:eq("+i+") td:eq(0)").html()
+             n2=$("#tb tr:eq("+i+") td:eq(1)").html()
+             n3=$("#tb tr:eq("+i+") td:eq(2)").html()
+             n4=$("#tb tr:eq("+i+") td:eq(3)").html()
+             sup=$("#tb tr:eq("+i+") td:eq(4)").html()
+             suma=(parseFloat(n1)+parseFloat(n2)+parseFloat(n3)+parseFloat(n4))/4
+             $("#tb tr:eq("+i+") td:eq(5)").html(suma)
+            if (suma>=9 && suma<15){
+                if(parseFloat(sup)>0) {
+                    res = (suma+parseFloat(sup)) / 2
+                    if (res > 14) {
+                        $("#tb tr:eq(" + i + ") td:eq(6)").html("Aprobado")
+                    }
+                    else {
+                        $("#tb tr:eq(" + i + ") td:eq(6)").html("Reprobado")
+                    }
+                }else{
+                        $("#tb tr:eq("+i+") td:eq(6)").html("Supletorio")
+                    }
+            }else{
+                if (suma<8 && suma>=0){
+                    $("#tb tr:eq("+i+") td:eq(6)").html("Reprobado")
+                }
+                else{
+                    $("#tb tr:eq("+i+") td:eq(6)").html("Aprobado")
+                }
+            }
+        }
+    </script>
+{% endblock %}

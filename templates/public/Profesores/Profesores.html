@@ -1,0 +1,65 @@
+{% extends "freeme/index.html" %}
+{% block cuerpo %}
+    <div class="well" style="margin-left: 30px; margin-right: 30px">
+        <table>
+            <tr>
+                <td style="width: 100px; text-align: right">Período: </td>
+                <td style="width: 400px">
+                    <select name="periodo" id="periodo" style="width: 100%">
+                        {% for periodo in periodos %}
+                            <option value="{{ periodo.id }}">{{ periodo.fecha_inicio }} - {{ periodo.fecha_fin }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td style="width: 100px; text-align: right">Sección:</td>
+                <td>
+                    <select name="seccion" id="seccion">
+                    {% for seccion in secciones %}
+                        <option value="{{ seccion.id }}">{{ seccion.seccion }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">Materia: </td>
+                <td>
+                    <select name="materia" id="materia" style="width: 100%">
+                    {% for materia in materias %}
+                        <option value="{{ materia.id }}">{{ materia.materia }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+                <td style="text-align: right">Paralelo: </td>
+                <td>
+                    <select name="paralelo" id="paralelo">
+                    {% for paralelo in paralelos %}
+                        <option value="{{ paralelo.id }}">{{ paralelo.paralelo }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr><td colspan="4" style="text-align: center"><button id="enviar" class="btn btn-info">Buscar</button></td></tr>
+        </table>
+    </div>
+    <div id="contenido">
+
+    </div>
+    <div style="text-align: center">
+        <a href="/Usuarios/micuenta/" class="btn btn-info">Volver</a>
+    </div>
+    <div style="height: 30px">
+
+    </div>
+    <script src="/static/js/jquery-1.8.2.js"></script>
+    <script>
+        $("#enviar").click(function(){
+            p=$("#periodo").val();
+            s=$("#seccion").val();
+            pa=$("#paralelo").val();
+            console.log("periodo: "+p +" seccion: "+s+" paralelo: "+pa)
+            $.post("/Profesores/",{periodo:p,seccion:s,paralelo:pa,materia:$("#materia").val()},function(data){
+                $("#contenido").html(data)
+            });
+        })
+    </script>
+{% endblock %}

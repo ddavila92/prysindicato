@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>
+        <div style="text-align: center; font-size: 14px">
+            <div>
+                <img src="{{ imagen }}" name="imagen"/>
+            </div>
+            <br/>
+            <label for="" style="padding: 10px; font-weight: bold">SINDICATO CANTONAL DE CHOFERES PROFESIONALES DE PASAJE</label><br/>
+            <label for="" style="padding: 10px; font-weight: bold">ESCUELA DE FORMACION DE CONDUCTORES PROFESIONALES FAUSTO L. SAN MARTÍN C.</label>
+        </div>
+        <div style="text-align: center; font-size: 14px; font-weight: bold">
+            <label for="">HOJA DE MATRÍCULA</label>
+        </div>
+        <br><br/><br/>
+        <div>
+            <div style="text-align: center; font-size: 14px; font-weight: bold">
+                <label for="">DATOS PERSONALES</label>
+            </div>
+            <div style="text-align: right">
+                <p>Pasaje, {{ fecha }}</p>
+            </div>
+            <table border="0.1">
+            <tr style="padding: 10px; padding-bottom: 0px"><td style="width: 400px" class="olvidar">No.Matricula: </td><td>00-0{{ matricula.id }}</td><td rowspan="4" style="border-color: #000000; width: 200px">aqui la foto</td></tr>
+            <tr style="padding: 10px; padding-bottom: 0px"><td >Estudiante: </td><td>{{ matricula.estudiante.usuario.first_name }} {{ matricula.estudiante.usuario.last_name }}</td></tr>
+            <tr style="padding: 10px; padding-bottom: 0px"><td>Cédula:  </td><td>{{ matricula.estudiante.cedula }}</td></tr>
+            <tr style="padding: 10px; padding-bottom: 0px"><td>Fecha Nacimiento: </td><td>{{ matricula.estudiante.fecha_nacimiento }}</td></tr>
+            <tr style="padding: 10px; padding-bottom: 0px"><td>Lugar de Nacimiento: </td><td colspan="2">{{ matricula.estudiante.lugar_nacimiento }}</td></tr>
+            <tr style="padding: 10px; padding-bottom: 0px"><td> Nacionalidad: </td><td colspan="2">{{ matricula.estudiante.nacionalidad }}</td></tr>
+            <tr style="padding: 10px; padding-bottom: 0px"><td>Sexo: </td><td colspan="2">{{ matricula.estudiante.sexo }}</td></tr>
+            <tr style="padding: 10px; padding-bottom: 0px"><td>Teléfono: </td><td colspan="2">{{ matricula.estudiante.telefono }}</td></tr>
+            <tr style="padding: 10px; padding-bottom: 0px"><td>Tipo de Sangre: </td><td colspan="2">{{ matricula.estudiante.tipo_sangre }}</td></tr>
+            <tr style="padding: 10px; padding-bottom: 0px"><td>Direccion: </td><td colspan="2">{{ matricula.estudiante.direccion }}</td></tr>
+        </table>
+        </div>
+
+        <div style="padding: 10px;padding-top: 30px; text-align: center">
+            <label for="" style="font-size: 14px; font-weight: bold">DATOS DE LA MATRÍCULA</label>
+        </div>
+        <table border="0.1" style="padding: 5px">
+            <tr><td style="padding: 10px; padding-bottom: 0px; width: 310px" class="olvidar">Aula: </td><td>{{ matricula.paralelo.paralelo }}</td></tr>
+            <tr><td style="padding: 10px; padding-bottom: 0px">Sección: </td><td>{{ matricula.seccion.seccion }}</td></tr>
+            <tr><td style="padding: 10px; padding-bottom: 0px">Período: </td><td>{{ matricula.periodo.fecha_inicio }} - {{ matricula.periodo.fecha_fin }}</td></tr>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div style="text-align: justify; font-size: 13px; font-weight: bold">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___________________ &nbsp;&nbsp;&nbsp;&nbsp; ___________________
+        </div>
+        <div style="text-align: justify; font-size: 13px; font-weight: bold">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ESTUDIANTE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SECRETARIA
+        </div>
+
+    </div>
+</body>
+</html>

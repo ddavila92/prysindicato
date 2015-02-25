@@ -1,0 +1,38 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+    <div class="well" style="margin: 0 auto; width: 700px">
+        <div class="row" style="text-align: center; font-weight: bold">
+            <p>REPORTES DE PROMOCIONES</p>
+        </div>
+        <form action="" method="post">
+            <div class="row" style="margin-left: 40px">
+                <div class="span3" style="text-align: right">
+                    Seleccione Paralelo:
+                </div>
+                <div class="span6">
+                    <select name="paralelo" id="paralelo" style="width: 100%">
+                        {% for paralelo in paralelos %}
+                            <option value="{{ paralelo.id }}">{{ paralelo.paralelo }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-left: 40px">
+                <div class="span3" style="text-align: right">
+                    Seleccione Período:
+                </div>
+                <div class="span6">
+                    <select name="periodo" id="periodo" style="width: 100%">
+                        {% for periodo in periodos %}
+                            <option value="{{ periodo.id }}">{{ periodo.fecha_inicio }} - {{ periodo.fecha_fin }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="text-align: center">
+                <button class="btn btn-info">Generar</button>
+                <a href="/admin/" class="btn btn-primary">Volver</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

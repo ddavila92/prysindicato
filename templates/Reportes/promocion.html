@@ -1,0 +1,57 @@
+{% extends "admin/base_site.html" %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+    <title></title>
+</head>
+<body>
+{% block content %}
+    <div class="row" style=" width: 1000px; margin: 0 auto; margin-top: 30px;">
+    <div class="span2">
+        <img src="/static/img/logo-ant.png" alt=""/>
+    </div>
+    <div class="span8" style="text-align: center; font-weight: bold">
+        <p>NÓMINA DE ALUMNOS GRADUADOS EN LA ESCUELA DE CAPACITACIÓN </p>
+        <p>DE CONDUCTORES PROFESIONALES DEL SINDICATO DE CHOFERES </p>
+        {% for pro in promocion %}
+            {% if forloop.first %}
+                <p>PROFESIONALES DEL CANTÓN PASAJE PERIODO: {{ pro.periodo|upper }} </p>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="span2">
+        <img src="/static/img/logo.png"  style="text-align: center; width: 100px" alt=""/>
+    </div>
+</div>
+<div class="well" style=" width: 1000px; margin: 0 auto; margin-top: 30px;">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <th>Número</th><th>Apellidos y Nombres</th><th>Cédula de Identidad</th><th>Observación</th>
+        </thead>
+        <tbody>
+            {% for alumno in observacion %}
+                <tr><td>{{ forloop.counter }}</td><td>{{ alumno.alumno }}</td><td>{{ alumno.cedula }}</td><td>{{ alumno.observacion }}</td></tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+    <div style="text-align: center; margin-top: 30px" id="ultimo">
+        <button class="btn btn-info" id="imp"><i class="icon-print"></i> Imprimir</button>
+        <a href="/Reporte/promocion/" class="btn btn-primary">Volver</a>
+    </div>
+    <script>
+        $("#imp").click(function(){
+            $("#ultimo").hide()
+            print()
+            $("#ultimo").show()
+        })
+    </script>
+{% endblock %}
+
+
+
+</body>
+</html>

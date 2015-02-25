@@ -1,0 +1,70 @@
+{% extends "private/micuentalogin.html" %}
+{% block informacion %}
+    {% if matricula %}
+        <div style="width:600px; margin-top:0px;text-align: center; background-color: #ffffff !important;" class="well" >
+         <embed src="/Reporte/matricula/{{ matricula.id }}" width=550 height=840>
+             <a href="/Reporte/matricula1/{{ matricula.id }}" class="btn btn-warning" target="_blank"> Imprimir</a>
+        <!--<iframe src="/Reporte/matricula/{{ matricula.id }}" frameborder="0" scrolling="no" align="top" width="100%" height="650"></iframe>-->
+    </div>
+    {% else %}
+        <div style=" height: 700px; margin-top:33px ; background-color: #ffffff !important;" class="well">
+        <div style="text-align: center; font-size: 12px;">
+            <strong>GESTIONAR MATRICULA</strong>
+        </div>
+        <div class="well">
+            <form action="" method="post">
+                <div class="row">
+                    <div class="span1" style="text-align: right">
+                        <strong>Sección: </strong>
+                    </div>
+                    <div class="span4" >
+                        <select name="seccion" id="seccion" class="controls">
+                            {% for seccion in secciones %}
+                                <option value="{{ seccion.id }}">{{ seccion.seccion }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="row" style="padding: 10px">
+                    <div class="span1" style="text-align: right">
+                        <strong>Período: </strong>
+                    </div>
+                    <div class="span4" >
+                        <select name="periodo" id="periodo" class="controls">
+                            {% for periodo in periodos %}
+                                <option value="{{ periodo.id }}">{{ periodo.fecha_inicio.month }} - {{ periodo.fecha_inicio.year }} / {{ periodo.fecha_fin.month }} - {{ periodo.fecha_fin.year }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="span1" style="text-align: right">
+                    <strong>Paralelo: </strong>
+                </div>
+                <div class="span" >
+                    <select name="paralelo" id="paralelo" class="controls">
+                        {% for paralelo in paralelos %}
+                            <option value="{{ paralelo.id }}">{{ paralelo.paralelo}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="span1" id="contador" style="width: 50px"></div>
+            </div>
+                <div style="text-align: center; padding: 10px">
+                    <button class="btn btn-warning">Matricular</button>
+                </div>
+            </form>
+        </div>
+    <p>{{ msj }}</p>
+    </div>
+    {% endif %}
+    <script src="/static/js/jquery-1.8.2.js"></script>
+    <script>
+        $("#paralelo").change(function(){
+            var paralelo=$("#paralelo option:selected").val();
+            $.post("/Matricula/id_paralelo/",{id_paralelo:paralelo},function(data){
+                $("#contador").html(data)
+            })
+        }).change()
+    </script>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "public/Profesores/Pagina_profesores.html" %}
+{% block informacion %}
+    <div class="well" style="margin-top: 30px">
+        <div class="row" style="margin-right:0; margin-left: -40px">
+            <div class="span1" style="text-align: right">Paralelo</div>
+            <div class="span2">
+                <select name="paralelo" id="paralelo" style="width: 100%">
+                {% for paralelo in paralelos %}
+                    <option value="{{ paralelo.id }}">{{ paralelo.paralelo }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div class="span1" style="text-align: right">Período</div>
+            <div class="span2">
+                <select name="periodo" id="periodo" style="width: 270px">
+                    {% for periodo in periodos %}
+                        <option value="{{ periodo.id }}">{{ periodo.fecha_inicio }} - {{ periodo.fecha_fin }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="row" style="margin-right:0; margin-left: -40px">
+            <div class="span1" style="text-align: right">Sección: </div>
+            <div class="span2">
+                <select name="seccion" id="seccion" style="width: 100%">
+                {% for seccion in secciones %}
+                    <option value="{{ seccion.id }}">{{ seccion.seccion }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div class="span1" style="text-align: right">Materia: </div>
+            <div class="span2">
+                <select name="materia" id="materia" style="width: 270px">
+                    {% for materia in materias %}
+                        <option value="{{  materia.id }}">{{ materia.materia }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div style="text-align: center">
+            <button id="buscar" class="btn btn-info">Buscar</button>
+        </div>
+    </div>
+    <div id="contenido">
+    {% block contenido %}
+
+    {% endblock %}
+    </div>
+    </div>
+    <script src="/static/js/jquery-1.8.2.js"></script>
+    <script>
+        $("#buscar").click(function(){
+            $.post("/Notas/modificar_notas/",{materia:$("#materia").val(),periodo:$("#periodo").val(),seccion:$("#seccion").val(),paralelo:$("#paralelo").val()}, function(data){
+                $("#contenido").html(data)
+            });
+        });
+    </script>
+{% endblock %}
